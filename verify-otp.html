@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>This is forgot password page</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2 mt-5">
+					<div class="my-card mt-1">
+						<div class="alert alert-success" role="alert">
+							We have sent OTP to your email..
+								<p th:text="${session.message}" style="color: red;"></p>
+						</div>
+
+
+
+						<form method="post" th:action="@{/verify-otp}">
+
+
+							<div class="form-group mt-3">
+								<input type="text" name="otp" placeholder="Enter OTP here"
+									class="form-control" required="required">
+							</div>
+
+
+
+
+							<div class="container text-center">
+
+								<button class="btn btn-success">Verify</button>
+
+							</div>
+
+						</form>
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

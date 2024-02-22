@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="card mr-3 ml-3">
+			<div class="card-body" th:if="${contact}">
+				<div class="container text-center">
+
+
+					<img src="" style="height: 200px; width: 200px;" class="myProfile"
+						th:src="@{'/img/'+${contact.image}}" alt="profile photoe">
+
+					<h3 class="mt-3">
+						<span th:text="${contact.contactName}"></span> ( <span
+							th:text="${contact.secondName}"></span> )
+					</h3>
+
+					<div class="table-responsive">
+
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">#ID</th>
+									<th scope="col"><span th:text="${contact.cId}"></span></th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">Email</th>
+									<td><span th:text="${contact.email}"></span></td>
+
+								</tr>
+
+								<tr>
+									<th scope="row">Phone</th>
+									<td><span th:text="${contact.phone}"></span></td>
+
+								</tr>
+
+								<tr>
+									<th scope="row">Work</th>
+									<td><span th:text="${contact.work}"></span></td>
+
+								</tr>
+
+							</tbody>
+
+
+
+
+
+						</table>
+
+						<div class="description mt-3">
+
+							<th:block th:utext="${contact.description}"></th:block>
+
+						</div>
+
+					</div>
+
+
+
+					<div class="container mt-3">
+
+						<a href="#" th:onclick="|deleteContact(${contact.cId})|"
+							class="btn btn-danger btn-block btn-sm">Delete</a>
+						<form th:action="@{'/user/update-contact/'+${contact.cId}}"
+							class="mt-2" method="post">
+
+							<button type="submit" class="btn btn-block btn-primary btn-sm">Update</button>
+
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+		</div>
+
+		<h1 class="text-center p-3 bg-danger text-white"
+			th:unless="${contact}">You dont't have permission to see this
+			contact...</h1>
+	</section>
+</body>
+</html>

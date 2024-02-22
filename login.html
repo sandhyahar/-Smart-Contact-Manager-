@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.divider:after, .divider:before {
+	content: "";
+	flex: 1;
+	height: 1px;
+	background: #eee;
+}
+</style>
+</head>
+<body>
+	<section class="vh-100">
+		<div class="container py-5 h-100">
+			<div
+				class="row d-flex align-items-center justify-content-center h-100">
+				<div class="col-md-8 col-lg-7 col-xl-6">
+					<img
+						src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+						class="img-fluid" alt="Phone image">
+				</div>
+
+				<div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+				
+					<div class="text-center mb-5">
+						<h2>Login</h2>
+					</div>
+
+					<div th:if="${param.error}" class="alert alert-danger">
+						Invalid username and password</div>
+
+
+					<div th:if="${param.logout}" class="alert alert-success">You
+						have been logout</div>
+						
+				     <div th:if="${param.change}" class="alert alert-success">
+				     	<p th:text="${param.change}">	</p>
+				     </div>
+						
+						
+						
+						
+				
+					
+					
+
+
+
+					<form action="#" id="Login-form" th:action="@{/dologin}"
+						class="form" method="post">
+						<!-- Email input -->
+						<div class="form-outline mb-4">
+							<label class="form-label" for="form1Example13">Email
+								address</label> <input type="email" id="username" name="username"
+								class="form-control form-control-lg" />
+						</div>
+
+						<!-- Password input -->
+						<div class="form-outline mb-4">
+							<label class="form-label" for="form1Example23">Password</label> <input
+								type="password" id="password" name="password"
+								class="form-control form-control-lg" />
+						</div>
+
+						<div class="d-flex justify-content-around align-items-center mb-4">
+							<!-- Checkbox -->
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value=""
+									id="form1Example3" checked /> <label class="form-check-label"
+									for="form1Example3"> Remember me </label>
+							</div>
+							<a href="#" th:href="@{/signup}">Register here</a>
+						</div>
+
+						<div class="container text-center">
+							<a th:href="@{/forgot}">Forgot Password ?</a>
+						</div>	
+							
+							
+			
+						<!-- Submit button -->
+						<input type="submit" name="submit"
+							class="btn btn-primary btn-lg btn-block" value="Sign in">
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+

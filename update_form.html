@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Dashboard</title>
+</head>
+<body>
+	<section>
+		<div class="card mr-3">
+
+			<div class="card-body">
+
+				<h1 class="text-center">Update your Contact</h1>
+
+				<div class="container-fluid mt-1">
+
+
+					<div class="row">
+
+						<div class="col-md-10 offset-md-1">
+
+							<form action="#" th:object="${contact}"
+								enctype="multipart/form-data" method="POST"
+								th:action="@{/user/process-update}" class="mt-2">
+
+
+							<input type="hidden" th:value="${contact.cId}" name="cId">
+
+								<!-- First Name -->
+
+								<div class="input-group">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text mr-3">
+
+											<i class="fa fa-plus"></i>
+
+										</div>
+
+
+									</div>
+
+									<input th:value="${contact.contactName}" type="text"
+										id="firstName" name="contactName" class="form-control"
+										placeholder="Enter Name here" required>
+
+								</div>
+
+								<!-- Second Name -->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text mr-3">
+
+											<i class="fas fa-user-alt"></i>
+
+										</div>
+
+
+									</div>
+
+									<input th:value="${contact.secondName}" type="text"
+										id="secondName" class="form-control" name="secondName"
+										placeholder="Enter Nick Name here">
+
+								</div>
+
+
+								<!-- Phone No -->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text mr-3">
+
+											<i class="fa fa-phone"></i>
+
+										</div>
+
+
+									</div>
+
+									<input th:value="${contact.phone}" type="number" id="phone"
+										class="form-control" name="phone"
+										placeholder="Enter phone no here" required>
+
+								</div>
+
+								<!-- email -->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text mr-3">@</div>
+
+
+									</div>
+
+									<input th:value="${contact.email}" type="email" id="email"
+										class="form-control" name="email"
+										placeholder="Enter email here" required>
+
+								</div>
+
+								<!-- Work -->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text mr-3">
+
+											<i class="fa fa-briefcase"></i>
+
+										</div>
+
+
+									</div>
+
+									<input th:value="${contact.work}" type="text" id="work"
+										class="form-control" name="work" placeholder="Enter work here">
+
+								</div>
+
+								<!-- Contact Description -->
+
+								<div class="input-group mt-3">
+
+									<textarea th:text="${contact.description}" rows="20"
+										name="description" id="description" class="form-control"
+										placeholder="Enter Contact Description Here"></textarea>
+
+								</div>
+
+								<!-- Contact Image -->
+								
+								<div class="container text-center">
+									
+									<img src="" th:src="@{'/img/'+${contact.image}}" alt="profile" style="width: 250px; height: 250px;" class="img-fluid myProfile">
+								
+								</div>	
+									
+								<p class="text-center">Choose new profile pic</p>		
+
+								<div class="custome-file mt-3">
+									<input type="file" name="profileImage" id="image">
+								</div>
+
+								<div class="container text-center mt-3">
+									<button class="btn btn-outline-primary">Save Contact</button>
+								</div>
+
+
+							</form>
+
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<script
+			src="https://cdn.tiny.cloud/1/b1t4icbi4d23s20xwco8p8rso1r2j64gg9joberylzw4yasi/tinymce/6/tinymce.min.js"
+			referrerpolicy="origin"></script>
+		<script>
+			tinymce
+					.init({
+						selector : '#description',
+						plugins : 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+						toolbar : 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+					});
+		</script>
+
+	</section>
+
+</body>
+</html>
